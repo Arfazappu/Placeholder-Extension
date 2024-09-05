@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Placeholder",
+  "description": "Generate placeholder text, names, emails, and addresses for testing and design.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "permissions": ["clipboardWrite"]
+}

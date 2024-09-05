@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placeholder Text</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 20px;
+        background-color: #f4f4f9;
+      }
+      h2 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      p.secondary {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+      .field-container {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .data-type-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .data-type-btn {
+        display: block;
+        width: clamp(150px, 50%, 300px);
+        padding: clamp(6px, 2vw, 10px);
+        margin-bottom: clamp(8px, 1vw, 12px);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
+        text-align: center;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .data-type-btn:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .data-type-btn.active {
+        background-color: #007bff;
+        color: white;
+      }
+      .data-type {
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      .select-field,
+      .length-field,
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .select-field:focus,
+      .length-field:focus,
+      .btn:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+      .btn {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .output-cont {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        min-height: 50px;
+        max-height: 200px;
+        overflow-y: scroll;
+        margin-bottom: 12px;
+        scrollbar-width: thin;
+      }
+      #copy-btn, #general-copy-btn {
+        background-color: #28a745;
+      }
+      #copy-btn:hover, #general-copy-btn:hover {
+        background-color: #218838;
+      }
+      .btn:disabled {
+        background-color: #ccc !important;
+        cursor: not-allowed;
+      }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px;
+        font-size: 0.9rem;
+        background-color: #333;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: opacity 0.5s, transform 0.5s;
+        transform: translateY(20px);
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .toast.error {
+        background-color: #f44336;
+      }
+
+      .toast.success {
+        background-color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Placeholder Text</h2>
+    <p class="secondary">
+      Generate placeholder text (such as Lorem Ipsum) and other sample data
+      (names, emails, addresses, etc.) based on user commands. Simplifying text
+      generation for testing and design purposes.
+    </p>
+
+    <div id="data-type-selector" class="data-type-buttons">
+      <div class="data-type-btn active" data-type="lorem">Lorem</div>
+      <div class="data-type-btn" data-type="person">Person</div>
+      <div class="data-type-btn" data-type="internet">Internet</div>
+      <div class="data-type-btn" data-type="phone">Phone</div>
+      <div class="data-type-btn" data-type="location">Location</div>
+      <div class="data-type-btn" data-type="date">Date</div>
+    </div>
+
+    <div id="lorem-fields-container" class="field-container">
+      <div class="data-type">Lorem</div>
+      <select id="lorem-cont" class="select-field">
+        <option value="">--select type--</option>
+      </select>
+      <input
+        type="number"
+        id="lorem-length"
+        class="length-field"
+        placeholder="length"
+        min="1"
+      />
+      <button id="lorem-btn" class="btn" disabled>Generate</button>
+
+      <div id="lorem-output" class="output-cont"></div>
+      <button id="copy-btn" class="btn" disabled>Copy to Clipboard</button>
+    </div>
+
+    <div
+      id="general-fields-container"
+      class="field-container"
+      style="display: none"
+    >
+      <div id="general-type-label" class="data-type"></div>
+      <select id="general-select-field" class="select-field">
+        <option value="">--select type--</option>
+      </select>
+      <button id="general-btn" class="btn" disabled>Generate</button>
+      <div id="general-output" class="output-cont"></div>
+      <button id="general-copy-btn" class="btn" disabled>Copy to Clipboard</button>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
