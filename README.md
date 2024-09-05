@@ -1,4 +1,4 @@
-<h2 style="display: flex;flex-direction: column;align-items: center;"> <img src="images/icon-64.png" alt=""> <span>Placeholder</span></h2>
+<h2> <img src="images/icon-64.png" alt=""> <span>Placeholder</span></h2>
     <p>
       Generate placeholder text (such as Lorem Ipsum) and other sample data
       (names, emails, addresses, etc.) based on user commands. Simplifying text
